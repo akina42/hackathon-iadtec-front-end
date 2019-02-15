@@ -26,12 +26,16 @@ export class RegisterOneComponent implements OnInit {
     let idRegisterOne = 1;
     this.registerOneService.getRegisterOne(idRegisterOne).subscribe(registerOne => {
       this.registerOne = registerOne;
+    }, error => {
+      console.log('teste', error);
     });
   }
 
   getAllRegisterOne(){
     this.registerOneService.getAllRegisterOne().subscribe(listRegisterOne => {
       this.listRegisterOne = listRegisterOne;
+    }, error => {
+      console.log('teste', error);
     });
   }
 

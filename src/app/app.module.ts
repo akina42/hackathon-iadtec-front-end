@@ -8,6 +8,7 @@ import { RegisterOneComponent } from './components/register-one/register-one.com
 import { RegisterOneService } from './services/register-one/register-one.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { httpInterceptorProviders } from './http-interceptors';
 
 
 
@@ -23,7 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule
   ],
   providers: [
-    RegisterOneService
+    RegisterOneService,
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

@@ -9,7 +9,11 @@ import { Observable } from 'rxjs';
 export class HttpRequestInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const apiRequest = req.clone({ url: `http://localhost:8080/api/v1/${req.url}` });
+    // Configurações para acesso local
+     const apiRequest = req.clone({ url: `http://localhost:8080/api/v1/${req.url}` });
+    // Configurações para acesso externo
+    // Rodar o comando ng serve --host ip
+    // const apiRequest = req.clone({ url: `http://192.168.25.10:8080/api/v1/${req.url}` });
     return next.handle(apiRequest);
   }
 }

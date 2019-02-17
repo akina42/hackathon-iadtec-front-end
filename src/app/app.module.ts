@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './http-interceptors';
 import { AppRoutingModule } from './/app-routing.module';
 import { RegistersComponent } from './pages/registers/registers.component';
+import { ReportsComponent } from './pages/reports/reports.component';
+import { ReportsService } from './services/reports/reports.service';
 
 
 
@@ -19,7 +21,8 @@ import { RegistersComponent } from './pages/registers/registers.component';
     AppComponent,
     HomeComponent,
     RegisterOneComponent,
-    RegistersComponent
+    RegistersComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { RegistersComponent } from './pages/registers/registers.component';
   ],
   providers: [
     RegisterOneService,
+    ReportsService,
     httpInterceptorProviders
   ],
   bootstrap: [AppComponent]

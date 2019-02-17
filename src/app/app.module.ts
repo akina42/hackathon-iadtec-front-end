@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { RegisterOneComponent } from './components/register-one/register-one.component';
 import { RegisterOneService } from './services/register-one/register-one.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
 import { httpInterceptorProviders } from './http-interceptors';
+import { AppRoutingModule } from './/app-routing.module';
+import { RegistersComponent } from './pages/registers/registers.component';
+
 
 
 
@@ -16,12 +18,13 @@ import { httpInterceptorProviders } from './http-interceptors';
   declarations: [
     AppComponent,
     HomeComponent,
-    RegisterOneComponent
+    RegisterOneComponent,
+    RegistersComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     RegisterOneService,

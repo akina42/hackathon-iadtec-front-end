@@ -1,15 +1,17 @@
-<div class=container>
-  <div class="row">
-    <div class="card-deck">
-      <div class="col-lg-2 align-items-stretch" *ngFor="let registerOne of listRegisterOne">
-        <div class="card-body">
-          <h6 class="card-title">{{registerOne.name}}</h6>
-          <p class="card-text">{{registerOne.value}}</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">{{registerOne.id}}</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let registerOne of listRegisterOne">
+      <th scope="row">{{registerOne.id}}</th>
+      <td>{{registerOne.name}}</td>
+      <td>{{registerOne.value}}</td>
+    </tr>
+  </tbody>
+</table>

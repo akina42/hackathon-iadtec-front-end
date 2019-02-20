@@ -22,15 +22,23 @@ export class ReportsComponent implements OnInit {
 
   donwloadXlsx(){
     this.reportsService.getDownloadXlsx()
-    .subscribe(response => this.downLoadFile(response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+    .subscribe(response => this.downloadFileXlsx(response, 
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'));
   }
 
   downLoadFile(data: any, type: string) {
-    var blob = new Blob([data], { type: type});
-    var url = window.URL.createObjectURL(blob);
-    var pwa = window.open(url);
-    if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+    const blob = new Blob([data], { type: type});
+    const url = window.URL.createObjectURL(blob);
+    const pwa = window.open(url);
+    if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
         alert( 'Please disable your Pop-up blocker and try again.');
     }
+  }
+
+  downloadFileXlsx(data: any, type: string) {
+    let link = document.createElement('a');
+    link.download = 'report.xlsx';
+    link.href = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' + data;
+    link.click();
   }
 }

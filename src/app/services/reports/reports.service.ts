@@ -8,11 +8,11 @@ export class ReportsService {
   constructor(private http: HttpClient) { }
 
   getDownloadPdf(): Observable<any>{
-    return this.http.get(`report/downloadPdf`, {responseType: 'arraybuffer'});
+    return this.http.get(`report/downloadPdf.pdf`, {responseType: 'arraybuffer'});
   }
 
   getDownloadXlsx(): Observable<any>{
-    return this.http.get(`report/downloadXlsx`, {responseType: 'arraybuffer'});
+    return this.http.get(`report/downloadXlsx.xlsx`, {responseType: 'blob'});
   }
 
 }

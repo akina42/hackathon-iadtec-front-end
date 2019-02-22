@@ -1,0 +1,25 @@
+
+
+<button type="button" class="btn btn-secondary btn-md" routerLink="/countries/new">Cadastrar Novo</button>
+<h3 *ngIf="false">Você não tem países, crie o seu primeiro cadastro!</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">CPF</th>
+      <th scope="col">Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let registerOne of listRegisterOne" >
+      <td>{{registerOne.name}}</td>
+      <td>{{registerOne.value}}</td>
+      <td>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="editCountry()">Editar</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="deleteCountry()">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  

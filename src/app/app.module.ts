@@ -20,6 +20,9 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
 import { StatesComponent } from './pages/states/states.component';
 import { StateRegisterComponent } from './components/state-register/state-register.component';
 import { FormStateComponent } from './components/form-state/form-state.component';
+import { ClientsComponent } from './pages/clients/clients.component';
+import { ClientRegisterComponent } from './components/client-register/client-register.component';
+import { FormClientComponent } from './components/form-client/form-client.component';
 
 
 
@@ -37,7 +40,10 @@ import { FormStateComponent } from './components/form-state/form-state.component
     ModalConfirmComponent,
     StatesComponent,
     StateRegisterComponent,
-    FormStateComponent
+    FormStateComponent,
+    ClientsComponent,
+    ClientRegisterComponent,
+    FormClientComponent
   ],
   imports: [
     BrowserModule,

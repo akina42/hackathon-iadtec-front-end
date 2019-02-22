@@ -7,16 +7,20 @@ import { CountryComponent } from './pages/country/country.component';
 import { FormCountryComponent } from './components/form-country/form-country.component';
 import { StatesComponent } from './pages/states/states.component';
 import { FormStateComponent } from './components/form-state/form-state.component';
+import { ClientsComponent } from './pages/clients/clients.component';
+import { FormClientComponent } from './components/form-client/form-client.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'registers', component: RegistersComponent },
+  // { path: 'registers', component: RegistersComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'countries', component: CountryComponent },
   { path: 'countries/new', component: FormCountryComponent },
   { path: 'states', component: StatesComponent },
   { path: 'states/new', component: FormStateComponent },
+  { path: 'clients', component: ClientsComponent },
+  { path: 'clients/new', component: FormClientComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

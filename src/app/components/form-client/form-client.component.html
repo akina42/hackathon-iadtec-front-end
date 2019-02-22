@@ -17,7 +17,7 @@
                       </div>
                       <button type="submit" class="btn btn-primary"
                       [disabled]="newCountryForm.form.invalid">Salvar</button>
-                      <button class="btn btn-primary" routerLink="/states">Voltar</button>
+                      <button class="btn btn-primary" routerLink="/clients">Voltar</button>
                     </form>
                     <p *ngFor="let alert of alerts">
                         <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>

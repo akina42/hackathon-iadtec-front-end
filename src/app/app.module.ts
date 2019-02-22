@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -15,6 +16,7 @@ import { ReportsService } from './services/reports/reports.service';
 import { CountryComponent } from './pages/country/country.component';
 import { RegisterCountryComponent } from './components/register-country/register-country.component';
 import { FormCountryComponent } from './components/form-country/form-country.component';
+import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 
 
 
@@ -28,18 +30,22 @@ import { FormCountryComponent } from './components/form-country/form-country.com
     ReportsComponent,
     CountryComponent,
     RegisterCountryComponent,
-    FormCountryComponent
+    FormCountryComponent,
+    ModalConfirmComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot(),
+    FormsModule
   ],
   providers: [
     RegisterOneService,
     ReportsService,
     httpInterceptorProviders
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalConfirmComponent]
 })
 export class AppModule { }

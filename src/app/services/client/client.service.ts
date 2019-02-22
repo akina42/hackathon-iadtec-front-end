@@ -21,5 +21,7 @@ export class ClientService {
     return this.http.get<Client[]>('cliente');
   }
 
-
+  deleteClient(idClient: number) {
+    return this.http.delete<Client>(`cliente/${idClient}`);
+  }
 }

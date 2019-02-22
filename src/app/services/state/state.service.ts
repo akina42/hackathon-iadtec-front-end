@@ -13,12 +13,16 @@ export class StateService {
     return this.http.post<State>(`estado/`, newState);
   }
 
-  getState(idState: number): Observable<State>{
-    return this.http.get<State>(`estado/${idState}`);
+  getState(idState: number): Observable<any>{
+    return this.http.get<any>(`estado/${idState}`);
   }
 
-  getAllStates(): Observable<State[]> {
-    return this.http.get<State[]>('estado');
+  getAllStates(): Observable<any> {
+    return this.http.get<any>('estado');
+  }
+
+  deleteState(idCountry: number) {
+    return this.http.delete<any>(`estado/${idCountry}`);
   }
 
 }

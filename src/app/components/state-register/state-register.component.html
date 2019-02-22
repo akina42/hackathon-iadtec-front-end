@@ -1,6 +1,7 @@
 
 
-<button type="button" class="btn btn-primary btn-md" routerLink="/states/new">Cadastrar Novo</button>
+<button type="button" class="btn btn-primary btn-md" routerLink="/states/new" 
+style="float: right; margin-bottom: 30px; margin-top: 30px;">Cadastrar Novo</button>
 <h3 *ngIf="false">Você não tem estados, crie o seu primeiro cadastro!</h3>
 <table class="table table-striped">
   <thead>
@@ -12,12 +13,12 @@
   <tbody>
     <tr *ngFor="let state of listStates" >
       <td>{{state.nome}}</td>
-      <td>{{state.sigla}}</td>
+      <td>{{state.uf}}</td>
       <td>
         <button type="button" class="btn btn-primary btn-sm" (click)="editCountry()">Editar</button>
       </td>
       <td>
-        <button type="button" class="btn btn-primary btn-sm" (click)="deleteCountry()">Deletar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="deleteState(state.id)">Deletar</button>
       </td>
     </tr>
   </tbody>

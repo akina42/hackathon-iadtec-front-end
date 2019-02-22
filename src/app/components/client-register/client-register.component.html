@@ -1,6 +1,7 @@
 
 
-<button type="button" class="btn btn-primary btn-md" routerLink="/clients/new">Cadastrar Novo</button>
+<button type="button" class="btn btn-primary btn-md" routerLink="/clients/new" 
+style="float: right; margin-bottom: 30px; margin-top: 30px;">Cadastrar Novo</button>
 <h3 *ngIf="false">Você não tem países, crie o seu primeiro cadastro!</h3>
 <table class="table table-striped">
   <thead>
@@ -14,10 +15,10 @@
       <td>{{client.cpf}}</td>
       <td>{{client.nome}}</td>
       <td>
-        <button type="button" class="btn btn-primary btn-sm" (click)="editCountry()">Editar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="editCountry(client.id)">Editar</button>
       </td>
       <td>
-        <button type="button" class="btn btn-primary btn-sm" (click)="deleteCountry()">Deletar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="deleteClient(client.id)">Deletar</button>
       </td>
     </tr>
   </tbody>

@@ -1,23 +1,22 @@
 
 
-<button type="button" class="btn btn-primary btn-md" routerLink="/countries/new">Cadastrar Novo</button>
+<button type="button" class="btn btn-primary btn-md" routerLink="/countries/new" 
+style="float: right; margin-bottom: 30px; margin-top: 30px;">Cadastrar Novo</button>
 <h3 *ngIf="false">Você não tem países, crie o seu primeiro cadastro!</h3>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">País</th>
-      <th scope="col">Sigla</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let country of listCountries" >
-      <td>{{country.pais}}</td>
-      <td>{{country.sigla}}</td>
+      <td>{{country.nome}}</td>
       <td>
         <button type="button" class="btn btn-primary btn-sm" (click)="editCountry()">Editar</button>
       </td>
       <td>
-        <button type="button" class="btn btn-primary btn-sm" (click)="deleteCountry()">Deletar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="deleteCountry(country.id)">Deletar</button>
       </td>
     </tr>
   </tbody>

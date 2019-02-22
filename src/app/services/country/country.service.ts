@@ -10,17 +10,20 @@ export class CountryService {
     private http: HttpClient
   ) { }
 
-  postNewCountry(newCountry: Country): Observable<Country>{
+  postNewCountry(newCountry: Country): Observable<any>{
     console.log(newCountry);
-    return this.http.post<Country>(`pais/`, newCountry);
+    return this.http.post<any>(`pais/`, newCountry);
   }
 
-  getCountry(idCountry: number): Observable<Country>{
-    return this.http.get<Country>(`pais/${idCountry}`);
+  getCountry(idCountry: number): Observable<any>{
+    return this.http.get<any>(`pais/${idCountry}`);
   }
 
-  getAllCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>('pais');
+  getAllCountries(): Observable<any> {
+    return this.http.get<any>('pais');
   }
 
+  deleteCountry(idCountry: number) {
+    return this.http.delete<any>(`pais/${idCountry}`);
+  }
 }

@@ -22,18 +22,23 @@ export class StateRegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getAllStates();
   }
 
   getAllStates() {
-    this.stateService.getAllStates().subscribe(listStates => {
-      this.listStates = listStates;
+    this.stateService.getAllStates().subscribe(response => {
+      this.listStates = response.data;
     }, error => {
       console.log('teste', error);
     });
   }
 
-  deleteCountry() {
-    console.log('deletar');
+  deleteState(idState) {
+    this.stateService.deleteState(idState).subscribe( () => {
+      this.getAllStates();
+    }, error => {
+      console.log('teste', error);
+    });
   }
 
   editCountry() {

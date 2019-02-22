@@ -33,8 +33,12 @@ export class ClientRegisterComponent implements OnInit {
     });
   }
 
-  deleteCountry() {
-    console.log('deletar');
+  deleteClient(idClient) {
+    this.clientService.deleteClient(idClient).subscribe( () => {
+      this.getAllClients();
+    }, error => {
+      console.log('teste', error);
+    });
   }
 
   editCountry() {

@@ -50,15 +50,19 @@ export class RegisterCountryComponent implements OnInit {
 
 
   getAllCountries() {
-    this.countryService.getAllCountries().subscribe(listCountries => {
-      this.listCountries = listCountries;
+    this.countryService.getAllCountries().subscribe(response => {
+      this.listCountries = response.data;
     }, error => {
       console.log('teste', error);
     });
   }
 
-  deleteCountry() {
-    console.log('deletar');
+  deleteCountry(idCountry) {
+    this.countryService.deleteCountry(idCountry).subscribe( () => {
+      this.getAllCountries();
+    }, error => {
+      console.log('teste', error);
+    });
   }
 
   editCountry() {

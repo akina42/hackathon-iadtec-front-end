@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../../models/client';
 import { ClientService } from '../../services/client/client.service';
+import { State } from '../../models/state';
+import { StateService } from '../../services/state/state.service';
 
 interface Alert {
   type: string;
   message: string;
 }
 
-const ALERTS: Alert[] = [{
-  type: 'success',
-  message: 'This is an success alert',
-}, {
-  type: 'info',
-  message: 'This is an info alert',
-}, {
-  type: 'warning',
-  message: 'This is a warning alert',
-}, {
+const ALERT_ERROR: Alert = {
   type: 'danger',
-  message: 'This is a danger alert',
+  message: '',
 }
-];
+
+const ALERT_SUCCESS: Alert = {
+  type: 'success',
+  message: 'Sucesso ao salvar cliente!',
+}
 
 @Component({
   selector: 'app-form-client',
@@ -29,41 +26,50 @@ const ALERTS: Alert[] = [{
 })
 export class FormClientComponent implements OnInit {
 
-  alerts: Alert[];
+  alert: Alert;
   client: Client;
   estado: string;
   idEstado: number;
   active = true;
   showActive = false;
+  hasStates = true;
+  listStates: State[];
+  closed = false;
 
   constructor(
     private clientService: ClientService,
+    private stateService: StateService
   ) { }
 
   ngOnInit() {
     this.getNewClient();
-  }
-  
-  close(alert: Alert) {
-    this.alerts.splice(this.alerts.indexOf(alert), 1);
-  }
-
-  reset() {
-    event.preventDefault();
-    this.alerts = Array.from(ALERTS);
+    this.getAllStates();
   }
 
   getNewClient(){
     this.client = new Client();
   }
 
+  getAllStates(){
+    this.stateService.getAllStates().subscribe(response => {
+      this.listStates = response.data;
+      if (this.listStates.length <= 0) {
+        this.hasStates = false;
+      }
+    }, error => {
+      this.hasStates = false;
+    });
+  }
+
   createClient() {
     this.client.idEstado = this.idEstado;
     this.client.situacao = 'ATIVO';
     this.clientService.postNewClient(this.client).subscribe(client => {
-      this.alerts = Array.from(ALERTS);
+      this.alert = ALERT_SUCCESS;
     }, error => {
-      this.alerts = Array.from(ALERTS);
+      console.log('erro', error.error.errors);
+      this.alert = ALERT_ERROR;
+      this.alert.message = error.error.errors.toString();
     });
   }
 

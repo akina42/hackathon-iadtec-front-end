@@ -7,20 +7,15 @@ interface Alert {
   message: string;
 }
 
-const ALERTS: Alert[] = [{
-  type: 'success',
-  message: 'This is an success alert',
-}, {
-  type: 'info',
-  message: 'This is an info alert',
-}, {
-  type: 'warning',
-  message: 'This is a warning alert',
-}, {
+const ALERT_ERROR: Alert = {
   type: 'danger',
-  message: 'This is a danger alert',
+  message: 'Ocorreu um erro ao tentar salvar o país, por favor tente novamente.',
 }
-];
+
+const ALERT_SUCCESS: Alert = {
+  type: 'success',
+  message: 'Sucesso ao salvar país!',
+}
 @Component({
   selector: 'app-form-country',
   templateUrl: './form-country.component.html',
@@ -29,6 +24,7 @@ const ALERTS: Alert[] = [{
 
 export class FormCountryComponent implements OnInit {
 
+  alert: Alert;
   alerts: Alert[];
   country: Country;
 
@@ -44,20 +40,20 @@ export class FormCountryComponent implements OnInit {
     this.country = new Country();
   }
 
-  close(alert: Alert) {
-    this.alerts.splice(this.alerts.indexOf(alert), 1);
-  }
+  // close(alert: Alert) {
+  //   this.alerts.splice(this.alerts.indexOf(alert), 1);
+  // }
 
-  reset() {
-    event.preventDefault();
-    this.alerts = Array.from(ALERTS);
-  }
+  // reset() {
+  //   event.preventDefault();
+  //   this.alerts = Array.from(ALERTS);
+  // }
 
   createCountry() {
     this.countryService.postNewCountry(this.country).subscribe(country => {
-      this.alerts = Array.from(ALERTS);
+      this.alert = ALERT_SUCCESS;
     }, error => {
-      this.alerts = Array.from(ALERTS);
+      this.alert = ALERT_ERROR;
     });
   }
 }

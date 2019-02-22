@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Country } from '../../models/country';
+import { CountryService } from '../../services/country/country.service';
 
 interface Alert {
   type: string;
@@ -28,10 +30,18 @@ const ALERTS: Alert[] = [{
 export class FormCountryComponent implements OnInit {
 
   alerts: Alert[];
+  country: Country;
 
-  constructor() { }
+  constructor(
+    private countryService: CountryService,
+  ) { }
 
   ngOnInit() {
+    this.getNewCountry();
+  }
+
+  getNewCountry(){
+    this.country = new Country();
   }
 
   close(alert: Alert) {
@@ -41,5 +51,13 @@ export class FormCountryComponent implements OnInit {
   reset() {
     event.preventDefault();
     this.alerts = Array.from(ALERTS);
+  }
+
+  createCountry() {
+    this.countryService.postNewCountry(this.country).subscribe(country => {
+      this.alerts = Array.from(ALERTS);
+    }, error => {
+      this.alerts = Array.from(ALERTS);
+    });
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterOneService } from '../../services/register-one/register-one.service';
 import { RegisterOne } from '../../models/register-one';
+import { ClientService } from '../../services/client/client.service';
+import { Client } from '../../models/client';
 
 @Component({
   selector: 'app-client-register',
@@ -9,32 +11,23 @@ import { RegisterOne } from '../../models/register-one';
 })
 export class ClientRegisterComponent implements OnInit {
 
-  registerOne: RegisterOne;
-  listRegisterOne: RegisterOne[];
+  listClients: Client[];
   hasCountries: true;
   closeResult: string;
   modalReference: any;
 
   constructor(
-    private registerOneService: RegisterOneService
+    private clientService: ClientService
   ) { }
 
   ngOnInit() {
-    this.getRegisterOne();
-    this.getAllRegisterOne();
-  }
-  getRegisterOne(){
-    const idRegisterOne = 1;
-    this.registerOneService.getRegisterOne(idRegisterOne).subscribe(registerOne => {
-      this.registerOne = registerOne;
-    }, error => {
-      console.log('teste', error);
-    });
+    this.getAllClients();
   }
 
-  getAllRegisterOne(){
-    this.registerOneService.getAllRegisterOne().subscribe(listRegisterOne => {
-      this.listRegisterOne = listRegisterOne;
+
+  getAllClients() {
+    this.clientService.getAllClients().subscribe(listClients => {
+      this.listClients = listClients;
     }, error => {
       console.log('teste', error);
     });

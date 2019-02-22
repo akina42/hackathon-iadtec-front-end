@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { State } from '../../models/state';
+import { StateService } from '../../services/state/state.service';
 
 interface Alert {
   type: string;
@@ -28,11 +30,20 @@ const ALERTS: Alert[] = [{
 export class FormStateComponent implements OnInit {
 
   alerts: Alert[];
+  state: State;
 
-  constructor() { }
+  constructor(
+    private stateService: StateService,
+  ) { }
 
   ngOnInit() {
+    this.getNewState();
   }
+
+  getNewState(){
+    this.state = new State();
+  }
+
 
   close(alert: Alert) {
     this.alerts.splice(this.alerts.indexOf(alert), 1);
@@ -41,6 +52,14 @@ export class FormStateComponent implements OnInit {
   reset() {
     event.preventDefault();
     this.alerts = Array.from(ALERTS);
+  }
+
+  createState() {
+    this.stateService.postNewState(this.state).subscribe(state => {
+      this.alerts = Array.from(ALERTS);
+    }, error => {
+      this.alerts = Array.from(ALERTS);
+    });
   }
 
 }

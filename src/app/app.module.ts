@@ -23,6 +23,9 @@ import { FormStateComponent } from './components/form-state/form-state.component
 import { ClientsComponent } from './pages/clients/clients.component';
 import { ClientRegisterComponent } from './components/client-register/client-register.component';
 import { FormClientComponent } from './components/form-client/form-client.component';
+import { ClientService } from './services/client/client.service';
+import { CountryService } from './services/country/country.service';
+import { StateService } from './services/state/state.service';
 
 
 
@@ -55,7 +58,10 @@ import { FormClientComponent } from './components/form-client/form-client.compon
   providers: [
     RegisterOneService,
     ReportsService,
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    ClientService,
+    CountryService,
+    StateService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ModalConfirmComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from '../../models/client';
+import { ClientService } from '../../services/client/client.service';
 
 interface Alert {
   type: string;
@@ -28,10 +30,18 @@ const ALERTS: Alert[] = [{
 export class FormClientComponent implements OnInit {
 
   alerts: Alert[];
+  client: Client;
+  estado: string;
+  idEstado: number;
+  active = true;
+  showActive = false;
 
-  constructor() { }
+  constructor(
+    private clientService: ClientService,
+  ) { }
 
   ngOnInit() {
+    this.getNewClient();
   }
   
   close(alert: Alert) {
@@ -41,6 +51,27 @@ export class FormClientComponent implements OnInit {
   reset() {
     event.preventDefault();
     this.alerts = Array.from(ALERTS);
+  }
+
+  getNewClient(){
+    this.client = new Client();
+  }
+
+  createClient() {
+    this.client.idEstado = this.idEstado;
+    this.client.situacao = 'ATIVO';
+    this.clientService.postNewClient(this.client).subscribe(client => {
+      this.alerts = Array.from(ALERTS);
+    }, error => {
+      this.alerts = Array.from(ALERTS);
+    });
+  }
+
+  getSituacaoClient(){
+    if (this.active) {
+      return 'ATIVO';
+    }
+    return 'INATIVO';
   }
 
 }

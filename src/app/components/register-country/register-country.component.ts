@@ -3,6 +3,8 @@ import { RegisterOneService } from '../../services/register-one/register-one.ser
 import { RegisterOne } from '../../models/register-one';
 import { NgbActiveModal, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
+import { CountryService } from '../../services/country/country.service';
+import { Country } from '../../models/country';
 
 @Component({
   selector: 'app-register-country',
@@ -11,20 +13,18 @@ import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component'
 })
 export class RegisterCountryComponent implements OnInit {
 
-  registerOne: RegisterOne;
-  listRegisterOne: RegisterOne[];
+  listCountries: Country[];
   hasCountries: true;
   closeResult: string;
   modalReference: any;
 
   constructor(
-    private registerOneService: RegisterOneService,
+    private countryService: CountryService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit() {
-    this.getRegisterOne();
-    this.getAllRegisterOne();
+    this.getAllCountries();
   }
 
   // openModalConfirm() {
@@ -49,18 +49,9 @@ export class RegisterCountryComponent implements OnInit {
   // }
 
 
-  getRegisterOne(){
-    const idRegisterOne = 1;
-    this.registerOneService.getRegisterOne(idRegisterOne).subscribe(registerOne => {
-      this.registerOne = registerOne;
-    }, error => {
-      console.log('teste', error);
-    });
-  }
-
-  getAllRegisterOne(){
-    this.registerOneService.getAllRegisterOne().subscribe(listRegisterOne => {
-      this.listRegisterOne = listRegisterOne;
+  getAllCountries() {
+    this.countryService.getAllCountries().subscribe(listCountries => {
+      this.listCountries = listCountries;
     }, error => {
       console.log('teste', error);
     });

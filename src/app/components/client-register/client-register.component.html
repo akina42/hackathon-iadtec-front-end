@@ -10,9 +10,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let registerOne of listRegisterOne" >
-      <td>{{registerOne.name}}</td>
-      <td>{{registerOne.value}}</td>
+    <tr *ngFor="let client of listClients" >
+      <td>{{client.cpf}}</td>
+      <td>{{client.nome}}</td>
       <td>
         <button type="button" class="btn btn-primary btn-sm" (click)="editCountry()">Editar</button>
       </td>

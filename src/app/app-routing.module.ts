@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RegistersComponent } from './pages/registers/registers.component';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { CountryComponent } from './pages/country/country.component';
+import { FormCountryComponent } from './components/form-country/form-country.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'registers', component: RegistersComponent },
   { path: 'reports', component: ReportsComponent },
+  { path: 'countries', component: CountryComponent },
+  { path: 'countries/new', component: FormCountryComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

@@ -12,6 +12,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { RegistersComponent } from './pages/registers/registers.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { ReportsService } from './services/reports/reports.service';
+import { CountryComponent } from './pages/country/country.component';
+import { RegisterCountryComponent } from './components/register-country/register-country.component';
+import { FormCountryComponent } from './components/form-country/form-country.component';
 
 
 
@@ -22,7 +25,10 @@ import { ReportsService } from './services/reports/reports.service';
     HomeComponent,
     RegisterOneComponent,
     RegistersComponent,
-    ReportsComponent
+    ReportsComponent,
+    CountryComponent,
+    RegisterCountryComponent,
+    FormCountryComponent
   ],
   imports: [
     BrowserModule,

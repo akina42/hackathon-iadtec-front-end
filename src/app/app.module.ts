@@ -17,6 +17,9 @@ import { CountryComponent } from './pages/country/country.component';
 import { RegisterCountryComponent } from './components/register-country/register-country.component';
 import { FormCountryComponent } from './components/form-country/form-country.component';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
+import { StatesComponent } from './pages/states/states.component';
+import { StateRegisterComponent } from './components/state-register/state-register.component';
+import { FormStateComponent } from './components/form-state/form-state.component';
 
 
 
@@ -31,7 +34,10 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
     CountryComponent,
     RegisterCountryComponent,
     FormCountryComponent,
-    ModalConfirmComponent
+    ModalConfirmComponent,
+    StatesComponent,
+    StateRegisterComponent,
+    FormStateComponent
   ],
   imports: [
     BrowserModule,

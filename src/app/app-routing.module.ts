@@ -5,6 +5,8 @@ import { RegistersComponent } from './pages/registers/registers.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { CountryComponent } from './pages/country/country.component';
 import { FormCountryComponent } from './components/form-country/form-country.component';
+import { StatesComponent } from './pages/states/states.component';
+import { FormStateComponent } from './components/form-state/form-state.component';
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'reports', component: ReportsComponent },
   { path: 'countries', component: CountryComponent },
   { path: 'countries/new', component: FormCountryComponent },
+  { path: 'states', component: StatesComponent },
+  { path: 'states/new', component: FormStateComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

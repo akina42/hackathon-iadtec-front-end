@@ -13,8 +13,12 @@
     <tr *ngFor="let registerOne of listRegisterOne" >
       <td>{{registerOne.name}}</td>
       <td>{{registerOne.value}}</td>
-      <button type="button" class="btn btn-secondary btn-sm" (click)="editCountry()">Editar</button>
-      <button type="button" class="btn btn-secondary btn-sm" (click)="deleteCountry()">Deletar</button>
+      <td>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="editCountry()">Editar</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="deleteCountry()">Deletar</button>
+      </td>
     </tr>
   </tbody>
 </table>

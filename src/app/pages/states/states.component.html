@@ -1,0 +1,26 @@
+<div id="wrapper">
+  <div id="page-content-wrapper">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+                  <h1>Estados</h1>          
+                  <button type="button" class="btn btn-secondary btn-md" routerLink="/states/new">Cadastrar Novo</button>
+                  <h3 *ngIf="false">Você não tem estados, crie o seu primeiro cadastro!</h3>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Sigla</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <app-state-register *ngFor="let registerOne of listRegisterOne" 
+                      [registerOne]=registerOne>
+                      </app-state-register>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>  
